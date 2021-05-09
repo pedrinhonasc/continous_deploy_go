@@ -12,7 +12,7 @@ steps:
     name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/go-cd:$SHORT_SHA"]
 
-  - id: "Ajustes no arquivo de deployment do k8s"
+  - id: "Ajustes no arquivo de deployment do K8S"
     name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "/bin/sh"
     args:
@@ -21,7 +21,7 @@ steps:
         sed 's#img-deployment-go#gcr.io/$PROJECT_ID/go-cd:$SHORT_SHA#g' k8s/deployment.yaml > k8s/deployment-new.yaml;
         cat k8s/deployment-new.yaml;
 
-  - id: "Deploy no k8s"
+  - id: "Deploy no K8S"
     name: "gcr.io/cloud-builders/kubectl"
     args:
       - 'apply'
