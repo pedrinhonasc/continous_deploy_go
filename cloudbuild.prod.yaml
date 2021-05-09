@@ -1,7 +1,7 @@
 steps:
   - id: "Rodando unit test"
     name: "gcr.io/cloud-builders/go:alpine"
-    args: ["test", "./go", "-v"]
+    args: ["test", ".", "-v"]
     env: ["PROJECT_ROOT=go-k8s"]
 
   - id: "Buildando imagem"
